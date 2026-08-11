@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="420" viewBox="0 0 1600 420" role="img" aria-labelledby="title desc">
   <title id="title">聚核智媒 Core Reach Media</title>
   <desc id="desc">Black and blue transparent logo for Core Reach Media</desc>
-  <g transform="translate(0 37.02) skewY(-10)">
-    <rect x="60" y="180" width="86" height="170" fill="#111310"/>
-    <rect x="148" y="70" width="86" height="280" fill="#111310"/>
-    <rect x="236" y="130" width="86" height="220" fill="#1265e8"/>
+  <g transform="translate(0 26.45) skewY(-10)">
+    <rect x="0" y="130" width="86.67" height="170" fill="#111310"/>
+    <rect x="106.67" y="20" width="86.67" height="280" fill="#111310"/>
+    <rect x="213.33" y="80" width="86.67" height="220" fill="#1265e8"/>
   </g>
   <g fill="#111310" font-family="Inter, PingFang SC, Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif">
-    <text x="410" y="240" font-size="190" font-weight="900">聚核智媒</text>
-    <text x="414" y="330" font-size="72" font-weight="700">CORE REACH MEDIA</text>
+    <text x="410" y="0" font-size="190" font-weight="900" dominant-baseline="hanging">聚核智媒</text>
+    <text x="410" y="240" font-size="80" font-weight="700" dominant-baseline="hanging">CORE REACH MEDIA</text>
   </g>
 </svg>
