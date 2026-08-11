@@ -23,7 +23,7 @@ export function Home() {
         <div className="home-hero__veil" />
         <div className="home-hero__content">
           <motion.div className="home-hero__label" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .2 }}>
-            GLOBAL GROWTH STUDIO · CHINA
+            CORE REACH MEDIA · CHINA
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 35 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8 }}>
             聚核<br />智媒

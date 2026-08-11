@@ -10,7 +10,7 @@ export function LogoMark({ inverse = false }: { inverse?: boolean }) {
       </span>
       <span>
         <strong>聚核智媒</strong>
-        <small>GLOBAL GROWTH STUDIO</small>
+        <small>CORE REACH MEDIA</small>
       </span>
     </Link>
   )
