@@ -70,7 +70,7 @@ h1, h2, h3, p { margin-top: 0; }
 .section-action { margin-top: 44px; }
 
 .home-hero { position: relative; min-height: calc(100svh - 24px); display: flex; overflow: hidden; background: #84abc0; }
-.home-hero__background { position: absolute; inset: 0; background: url('/images/hero-earth.webp') center / cover; transform: scale(1.02); }
+.home-hero__background { position: absolute; inset: 0; background: url('./assets/images/hero-earth.webp') center / cover; transform: scale(1.02); }
 .home-hero__veil { position: absolute; inset: 0; background: rgba(7,17,24,.28); }
 .home-hero__content { position: relative; width: min(var(--content), calc(100% - 64px)); margin: 0 auto; padding: 158px 0 98px; display: grid; grid-template-columns: 1fr 390px; align-items: end; }
 .home-hero__label { position: absolute; top: 122px; left: 2px; color: var(--white); font-size: 11px; font-weight: 800; }
@@ -125,7 +125,7 @@ h1, h2, h3, p { margin-top: 0; }
 .capability-card a { align-self: flex-end; width: 48px; height: 48px; display: grid; place-items: center; color: var(--ink); background: var(--signal); border-radius: 50%; }
 
 .superpowers { position: relative; padding: 120px max(32px, calc((100vw - var(--content))/2)) 140px; overflow: hidden; }
-.superpowers__backdrop { position: absolute; inset: 0; background: #753e29 url('/images/strategy-table.webp') center / cover; filter: saturate(.65) contrast(1.12); }
+.superpowers__backdrop { position: absolute; inset: 0; background: #753e29 url('./assets/images/strategy-table.webp') center / cover; filter: saturate(.65) contrast(1.12); }
 .superpowers__backdrop::after { content: ''; position: absolute; inset: 0; background: rgba(38,15,5,.58); }
 .superpowers > *:not(.superpowers__backdrop) { position: relative; }
 .superpowers__grid { margin-top: 76px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: start; }
@@ -156,7 +156,7 @@ h1, h2, h3, p { margin-top: 0; }
 .media-strip strong { height: 100%; display: grid; place-items: center; border-left: 1px solid rgba(255,255,255,.25); font-size: 19px; }
 
 .rhythm-section { position: relative; min-height: 1000px; padding: 120px max(32px, calc((100vw - var(--content))/2)); overflow: hidden; }
-.rhythm-section__background { position: absolute; inset: 0; background: var(--sky) url('/images/global-city.webp') center / cover; }
+.rhythm-section__background { position: absolute; inset: 0; background: var(--sky) url('./assets/images/global-city.webp') center / cover; }
 .rhythm-section__background::after { content: ''; position: absolute; inset: 0; background: rgba(25,136,198,.8); }
 .rhythm-section__heading { position: relative; max-width: 700px; color: var(--white); }
 .rhythm-section__heading h2 { font-size: 50px; line-height: 1.08; }
