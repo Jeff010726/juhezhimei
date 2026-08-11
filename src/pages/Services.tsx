@@ -10,10 +10,10 @@ export function Services() {
   return (
     <>
       <Seo title="服务能力｜聚核智媒" description="聚核智媒提供海外广告投放、网站与独立站、SEO、创意本地化和数据增长策略。" />
-      <PageHero eyebrow="SERVICES" index="01" title="为增长配置能力，而不是堆叠服务。" intro="每个项目从真实商业目标出发，选择最能缩短验证路径、提高转化效率的执行组合。" image={images.globalLogistics} />
+      <PageHero eyebrow="SERVICES" index="01" title="按业务目标安排团队、渠道和执行范围。" intro="有的项目需要先解决网站承接，有的项目需要先验证市场和素材。方案会根据现状调整。" image={images.globalLogistics} />
 
       <section className="services-overview">
-        <SectionIntro eyebrow="FULL-FUNNEL SUPPORT" title="从市场进入到规模增长，提供全链路支持。" />
+        <SectionIntro eyebrow="FULL-FUNNEL SUPPORT" title="从市场进入到规模增长，每个环节都有明确交付。" copy="下面列出常用服务。实际项目会根据目标、团队能力和预算选择其中一部分。" />
         <div className="service-detail-list">
           {services.map((service) => {
             const Icon = service.icon
@@ -33,19 +33,19 @@ export function Services() {
         <img src={images.strategyTable} alt="出海增长策略讨论" />
         <div>
           <p className="eyebrow eyebrow--light">ONE TEAM, ONE GOAL</p>
-          <h2>不是多个供应商的拼接，<br />而是一支团队共同经营增长。</h2>
-          <p>渠道、素材、网站与数据使用同一套目标和判断标准，减少沟通损耗，也让优化动作更快进入下一轮。</p>
+          <h2>渠道、素材、网站和数据，使用同一套目标。</h2>
+          <p>项目负责人统一安排执行和复盘。广告发现的问题会回到素材和页面，网站数据也会影响下一轮预算。</p>
         </div>
       </section>
 
       <section className="process-section">
-        <SectionIntro eyebrow="HOW WE WORK" title="从低风险试点开始，逐步建立共同判断。" />
+        <SectionIntro eyebrow="HOW WE WORK" title="先完成一轮小范围验证，再决定怎么扩大投入。" />
         <div className="process-list">
           {processSteps.map(([number, title, copy]) => (
             <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>
           ))}
         </div>
-        <Link className="section-action" to="/contact">讨论你的项目 <ArrowUpRight size={18} /></Link>
+        <Link className="section-action" to="/contact">提交业务目标 <ArrowUpRight size={18} /></Link>
       </section>
     </>
   )
