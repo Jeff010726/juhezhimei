@@ -49,8 +49,8 @@ export function Layout() {
 
       <footer className="site-footer">
         <div className="footer-top">
-          <p className="eyebrow eyebrow--light">START WITH CLARITY</p>
-          <h2>让下一次出海投入<br />更接近真实增长。</h2>
+          <p className="eyebrow eyebrow--light">BUILD YOUR NEXT MARKET</p>
+          <h2>把下一站市场，<br />变成下一段增长。</h2>
           <NavLink className="footer-action" to="/contact" aria-label="获取增长诊断">
             <ArrowUpRight size={32} />
           </NavLink>
@@ -70,14 +70,14 @@ export function Layout() {
             <NavLink to="/contact">联系我们</NavLink>
           </div>
           <div className="footer-placeholder">
-            <span>联系</span>
-            <p>官网：________________</p>
-            <p>电话：________________</p>
-            <p>地址：________________</p>
+            <span>合作</span>
+            <p>全球数字增长项目</p>
+            <NavLink to="/contact">提交项目需求</NavLink>
+            <p>Asia based · Global delivery</p>
           </div>
         </div>
-        <div className="footer-wordmark">聚核智媒</div>
-        <div className="footer-legal"><span>© 2026 JUHE ZHIMEDIA</span><span>隐私政策 · 法律声明</span></div>
+        <div className="footer-wordmark">CORE REACH MEDIA</div>
+        <div className="footer-legal"><span>© 2026 CORE REACH MEDIA</span><span>聚核智媒 · 全球数字增长伙伴</span></div>
       </footer>
     </div>
   )

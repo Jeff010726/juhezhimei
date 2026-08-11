@@ -1,166 +1,299 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, CircleCheck, MoveRight } from 'lucide-react'
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  BarChart3,
+  CircleCheck,
+  Globe2,
+  Languages,
+  Search,
+} from 'lucide-react'
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { images } from '../assets/site-images'
-import { SectionIntro } from '../components/SectionIntro'
 import { Seo } from '../components/Seo'
-import { growthSteps, platforms, rhythms, services } from '../data'
+import { growthSteps, platforms } from '../data'
 
 const reveal = {
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: .2 },
-  transition: { duration: .65 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.62, ease: [0.22, 1, 0.36, 1] as const },
 }
+
+const engines = [
+  {
+    index: '01',
+    title: '市场洞察',
+    label: 'MARKET INTELLIGENCE',
+    description: '从市场容量、竞争格局和用户意图出发，先确认增长机会，再决定预算与渠道。',
+    image: images.dataDashboard,
+    icon: Search,
+    points: ['市场优先级', '用户需求地图', '竞争投放观察'],
+  },
+  {
+    index: '02',
+    title: '本地化创意',
+    label: 'LOCAL CREATIVE',
+    description: '把产品价值翻译成当地用户愿意停留、理解并行动的内容，而不只是语言转换。',
+    image: images.creativeWorkshop,
+    icon: Languages,
+    points: ['沟通策略', '素材生产', '落地页协同'],
+  },
+  {
+    index: '03',
+    title: '增长优化',
+    label: 'GROWTH OPTIMIZATION',
+    description: '围绕真实业务目标持续测试受众、素材和出价，让每一轮数据都进入下一轮决策。',
+    image: images.websiteAnalytics,
+    icon: BarChart3,
+    points: ['投放执行', '归因分析', '持续迭代'],
+  },
+]
+
+const proofMetrics = [
+  { value: '600万+', label: '累计曝光' },
+  { value: '18.9万+', label: '有效点击' },
+  { value: '$0.72起', label: '单次点击成本' },
+]
 
 export function Home() {
   return (
     <>
-      <Seo title="聚核智媒｜企业出海增长解决方案" description="聚核智媒提供海外广告投放、网站建设、SEO、本地化创意和数据优化服务，帮助企业构建可持续的全球获客系统。" />
+      <Seo
+        title="聚核智媒｜全球数字增长伙伴"
+        description="聚核智媒为出海企业提供市场洞察、本地化创意、媒体投放与增长优化服务。"
+      />
 
-      <section className="home-hero">
-        <div className="home-hero__background" />
-        <div className="home-hero__veil" />
-        <div className="home-hero__content">
-          <motion.div className="home-hero__label" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .2 }}>
-            CORE REACH MEDIA · CHINA
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 35 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8 }}>
-            聚核<br />智媒
-          </motion.h1>
-          <motion.div className="home-hero__statement" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .25, duration: .7 }}>
-            <span>让海外增长</span>
-            <strong>从流量投入走向可持续生意</strong>
-            <Link to="/contact">获取增长方案 <ArrowUpRight size={17} /></Link>
-          </motion.div>
-          <a className="hero-scroll" href="#growth" aria-label="继续浏览"><ArrowDown size={18} /></a>
-        </div>
-        <div className="hero-ticker" aria-hidden="true">
-          <span>PAID MEDIA</span><i />
-          <span>WEB EXPERIENCE</span><i />
-          <span>SEO GROWTH</span><i />
-          <span>LOCAL CREATIVE</span>
-        </div>
-      </section>
+      <div className="cr-home">
+        <section className="cr-hero" aria-labelledby="hero-title">
+          <img
+            className="cr-hero__image"
+            src={images.heroEarth}
+            alt="从亚洲连接全球市场的数字网络"
+            fetchPriority="high"
+          />
+          <div className="cr-hero__shade" />
 
-      <section className="thesis-band" id="growth">
-        <motion.div className="thesis-band__visual" {...reveal}>
-          <img src={images.globalTeam} alt="跨市场团队协作" />
-          <div className="visual-stamp"><span>ONE</span><strong>GROWTH<br />SYSTEM</strong></div>
-          <div className="visual-tag visual-tag--one">MARKET</div>
-          <div className="visual-tag visual-tag--two">CREATIVE</div>
-          <div className="visual-tag visual-tag--three">DATA</div>
-        </motion.div>
-        <motion.div className="thesis-band__copy" {...reveal}>
-          <p className="eyebrow eyebrow--light">ABOUT JUHE</p>
-          <h2>把分散的增长动作，<br />整合成一套获客系统。</h2>
-          <p>聚核智媒连接市场判断、网站承接、流量获取、创意转化和数据优化，让每一个环节都为下一步提供更高质量的输入。</p>
-          <Link className="text-link text-link--light" to="/about">了解我们的工作方式 <ArrowRight size={18} /></Link>
-        </motion.div>
-      </section>
-
-      <section className="growth-system">
-        <SectionIntro eyebrow="THE GROWTH SYSTEM" title="增长不是五项服务的叠加，而是五个环节的协同。" copy="从进入市场到规模增长，我们围绕同一个商业目标安排策略、执行与复盘。" />
-        <div className="growth-system__track">
-          {growthSteps.map(([number, title, copy], index) => (
-            <motion.article key={number} className="growth-step" {...reveal} transition={{ duration: .55, delay: index * .06 }}>
-              <span>{number}</span>
-              <div className="growth-step__line"><i /></div>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </motion.article>
-          ))}
-        </div>
-      </section>
-
-      <section className="capability-showcase">
-        <div className="capability-showcase__header">
-          <p className="eyebrow eyebrow--light">WHAT WE DO</p>
-          <h2>围绕增长目标，<br />配置真正需要的能力。</h2>
-        </div>
-        <div className="capability-showcase__cards">
-          {[
-            ['广告增长', '在正确市场找到高价值用户', images.dataDashboard, 'META · GOOGLE · TIKTOK'],
-            ['网站转化', '把访问转化成可追踪的询盘', images.websiteAnalytics, 'STRATEGY · UX · ANALYTICS'],
-            ['本地化创意', '让内容进入当地用户的语境', images.creativeWorkshop, 'DESIGN · VIDEO · TESTING'],
-          ].map(([title, copy, image, meta], index) => (
-            <motion.article className={`capability-card capability-card--${index + 1}`} key={title} {...reveal}>
-              <img src={image} alt={title} />
-              <div className="capability-card__shade" />
-              <div className="capability-card__body">
-                <span>0{index + 1} / {meta}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-                <Link to="/services" aria-label={`查看${title}`}><ArrowUpRight /></Link>
+          <div className="cr-hero__inner">
+            <motion.div {...reveal} className="cr-hero__content">
+              <p className="cr-kicker cr-kicker--light">
+                <span>CORE REACH MEDIA</span>
+                <span>GLOBAL GROWTH PARTNER</span>
+              </p>
+              <h1 id="hero-title">
+                让全球触达，
+                <strong>变成可衡量的增长。</strong>
+              </h1>
+              <p className="cr-hero__lead">
+                从市场判断到媒体投放，我们把策略、创意和数据放进同一套增长系统，帮助中国品牌更稳地进入全球市场。
+              </p>
+              <div className="cr-actions">
+                <Link className="cr-button cr-button--signal" to="/contact">
+                  开始一个增长项目
+                  <ArrowUpRight size={18} strokeWidth={1.8} />
+                </Link>
+                <Link className="cr-text-link cr-text-link--light" to="/cases">
+                  查看真实案例 <ArrowRight size={17} />
+                </Link>
               </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+            </motion.div>
 
-      <section className="superpowers">
-        <div className="superpowers__backdrop" />
-        <SectionIntro light eyebrow="CORE CAPABILITIES" title="我们的增长能力" copy="策略、投放、网站、内容与数据，由同一支项目团队协同推进。" />
-        <div className="superpowers__grid">
-          {services.map((service, index) => {
-            const Icon = service.icon
+            <motion.div {...reveal} transition={{ ...reveal.transition, delay: 0.12 }} className="cr-hero__signal">
+              <span className="cr-status-dot" />
+              <span>Asia based</span>
+              <span>Global delivery</span>
+            </motion.div>
+          </div>
+
+          <div className="cr-hero__footer">
+            <div className="cr-hero__metrics" aria-label="核心能力">
+              <span><b>4</b> 主流媒体平台</span>
+              <span><b>5</b> 步增长闭环</span>
+              <span><b>1</b> 个统一业务目标</span>
+            </div>
+            <a className="cr-scroll" href="#growth-system" aria-label="向下查看增长系统">
+              <ArrowDown size={18} />
+            </a>
+          </div>
+        </section>
+
+        <section className="cr-intro" id="growth-system">
+          <motion.div {...reveal} className="cr-intro__heading">
+            <p className="cr-kicker"><span>THE GROWTH SYSTEM</span><span>01 / 05</span></p>
+            <h2>我们不把出海拆成一堆孤立动作。</h2>
+          </motion.div>
+          <motion.div {...reveal} className="cr-intro__copy">
+            <p>
+              流量、内容、转化和数据必须相互反馈。聚核智媒把它们放进一条可复盘、可优化、可持续推进的工作链路。
+            </p>
+            <Link className="cr-text-link" to="/services">
+              了解完整服务 <ArrowRight size={17} />
+            </Link>
+          </motion.div>
+        </section>
+
+        <section className="cr-engines" aria-label="增长引擎">
+          {engines.map((engine, index) => {
+            const Icon = engine.icon
             return (
-              <motion.article className={`service-tile service-tile--${index + 1}`} key={service.title} {...reveal}>
-                <div className="service-tile__top"><span>{service.number}</span><Icon size={23} /></div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <small>{service.en}</small>
+              <motion.article
+                {...reveal}
+                transition={{ ...reveal.transition, delay: index * 0.08 }}
+                className="cr-engine"
+                key={engine.title}
+              >
+                <div className="cr-engine__media">
+                  <img src={engine.image} alt="" loading="lazy" />
+                  <span className="cr-engine__index">{engine.index}</span>
+                </div>
+                <div className="cr-engine__body">
+                  <Icon size={24} strokeWidth={1.6} />
+                  <p>{engine.label}</p>
+                  <h3>{engine.title}</h3>
+                  <div className="cr-engine__description">{engine.description}</div>
+                  <ul>
+                    {engine.points.map((point) => <li key={point}>{point}</li>)}
+                  </ul>
+                </div>
               </motion.article>
             )
           })}
-        </div>
-        <Link className="section-action section-action--light" to="/services">查看完整服务 <ArrowUpRight size={18} /></Link>
-      </section>
+        </section>
 
-      <section className="case-feature">
-        <SectionIntro eyebrow="SELECTED CASE" title="用持续测试，扩大东南亚新用户获取规模。" copy="某消费分期服务项目，以多媒体组合、创意迭代和预算集中完成增长验证。" />
-        <div className="case-feature__layout">
-          <motion.div className="case-feature__metrics" {...reveal}>
-            <div><strong>600万+</strong><span>单组广告系列展示</span></div>
-            <div><strong>18.9万+</strong><span>单组链接点击</span></div>
-            <div><strong>$0.72起</strong><span>单次链接点击费用</span></div>
-            <Link to="/cases">查看项目方法 <MoveRight /></Link>
+        <section className="cr-process">
+          <div className="cr-section-head">
+            <motion.div {...reveal}>
+              <p className="cr-kicker"><span>ONE CONNECTED PROCESS</span><span>02 / 05</span></p>
+              <h2>从判断到放大，五步形成闭环。</h2>
+            </motion.div>
+            <motion.p {...reveal}>
+              每个阶段都有明确交付物和验证标准，团队知道为什么做，也看得见下一步。
+            </motion.p>
+          </div>
+
+          <div className="cr-process__rail">
+            {growthSteps.map(([number, title, description], index) => (
+              <motion.div
+                {...reveal}
+                transition={{ ...reveal.transition, delay: index * 0.06 }}
+                className="cr-process__step"
+                key={number}
+              >
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                {index < growthSteps.length - 1 && <ArrowRight aria-hidden="true" size={18} />}
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="cr-media">
+          <div className="cr-media__visual">
+            <img src={images.globalCity} alt="全球城市中的数字媒体网络" loading="lazy" />
+            <div className="cr-media__caption">
+              <Globe2 size={23} strokeWidth={1.6} />
+              <span>GLOBAL MEDIA ACCESS</span>
+            </div>
+          </div>
+
+          <div className="cr-media__content">
+            <motion.div {...reveal}>
+              <p className="cr-kicker cr-kicker--light"><span>MEDIA RESOURCES</span><span>03 / 05</span></p>
+              <h2>连接主流平台，也连接每一次业务判断。</h2>
+              <p className="cr-media__lead">
+                我们根据市场阶段、用户意图和转化目标组合渠道，不用同一套投放逻辑解决所有问题。
+              </p>
+            </motion.div>
+
+            <div className="cr-platforms">
+              {platforms.map((platform, index) => (
+                <motion.div
+                  {...reveal}
+                  transition={{ ...reveal.transition, delay: index * 0.06 }}
+                  className="cr-platform"
+                  key={platform}
+                >
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{platform}</strong>
+                  <p>{['社交触达与需求培育', '高意图搜索与全域覆盖', '短视频内容与规模获客', '视觉内容与品牌连接'][index]}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="cr-proof">
+          <div className="cr-section-head cr-section-head--proof">
+            <motion.div {...reveal}>
+              <p className="cr-kicker"><span>PROOF, NOT PROMISES</span><span>04 / 05</span></p>
+              <h2>让数据成为共同语言。</h2>
+            </motion.div>
+            <motion.p {...reveal}>
+              从曝光效率到有效询盘，我们用一套透明的指标体系同步进展，让优化建立在事实之上。
+            </motion.p>
+          </div>
+
+          <div className="cr-proof__layout">
+            <motion.div {...reveal} className="cr-proof__visual">
+              <img src={images.caseDashboard} alt="数字广告项目数据分析面板" loading="lazy" />
+              <div className="cr-proof__badge">
+                <CircleCheck size={20} />
+                <span>持续优化中</span>
+              </div>
+            </motion.div>
+
+            <motion.div {...reveal} className="cr-proof__content">
+              <p className="cr-proof__eyebrow">跨境数字广告项目</p>
+              <h3>从分散投放，到一套能持续迭代的增长机制。</h3>
+              <p>
+                重新梳理目标市场、受众和素材节奏，以周为单位复盘预算与结果，逐步提高有效触达效率。
+              </p>
+              <div className="cr-proof__metrics">
+                {proofMetrics.map((metric) => (
+                  <div key={metric.label}>
+                    <strong>{metric.value}</strong>
+                    <span>{metric.label}</span>
+                  </div>
+                ))}
+              </div>
+              <Link className="cr-button cr-button--ink" to="/cases">
+                查看案例详情 <ArrowUpRight size={18} />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="cr-collaboration">
+          <motion.div {...reveal} className="cr-collaboration__copy">
+            <p className="cr-kicker"><span>BUILT TO WORK TOGETHER</span><span>05 / 05</span></p>
+            <h2>你掌握业务，我们负责把增长跑起来。</h2>
+            <p>
+              从首次沟通开始，我们就以业务目标、决策节奏和可执行交付为中心。没有黑箱，也没有脱离实际的漂亮方案。
+            </p>
           </motion.div>
-          <motion.div className="case-feature__evidence" {...reveal}>
-            <img src={images.caseDashboard} alt="脱敏后的广告投放数据后台" />
-            <div className="case-feature__note"><CircleCheck size={18} /> 2025 投放后台数据，账户及客户名称已脱敏</div>
+          <motion.div {...reveal} className="cr-collaboration__list">
+            {['目标与预算同步', '策略与执行一体', '数据与结论透明', '团队与节奏稳定'].map((item, index) => (
+              <div key={item}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{item}</strong>
+                <CircleCheck size={20} />
+              </div>
+            ))}
           </motion.div>
-        </div>
-      </section>
+        </section>
 
-      <section className="media-strip">
-        <span>SUPPORTED MEDIA ECOSYSTEM</span>
-        {platforms.map(platform => <strong key={platform}>{platform}</strong>)}
-      </section>
-
-      <section className="rhythm-section">
-        <div className="rhythm-section__background" />
-        <div className="rhythm-section__heading">
-          <p className="eyebrow">VISIBLE COLLABORATION</p>
-          <h2>你会持续知道：<br />发生了什么，为什么，下一步做什么。</h2>
-        </div>
-        <div className="rhythm-section__cards">
-          {rhythms.map(([en, title, copy], index) => (
-            <motion.article key={en} className={`rhythm-card rhythm-card--${index + 1}`} {...reveal}>
-              <span>{en}</span><h3>{title}</h3><p>{copy}</p>
-            </motion.article>
-          ))}
-        </div>
-      </section>
-
-      <section className="pilot-cta">
-        <div>
-          <p className="eyebrow">LOW-RISK PILOT</p>
-          <h2>先验证，再放大。</h2>
-          <p>从一次增长诊断开始，确定最值得优先投入的市场与获客路径。</p>
-        </div>
-        <Link to="/contact">开始增长诊断 <ArrowUpRight /></Link>
-      </section>
+        <section className="cr-final-cta">
+          <div>
+            <p>READY TO EXPAND?</p>
+            <h2>下一站，增长见。</h2>
+          </div>
+          <Link className="cr-button cr-button--signal" to="/contact">
+            和我们聊聊 <ArrowUpRight size={18} />
+          </Link>
+        </section>
+      </div>
     </>
   )
 }
