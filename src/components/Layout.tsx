@@ -19,14 +19,14 @@ export function Layout() {
   useEffect(() => setMenuOpen(false), [pathname])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 40)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
-    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 900
+    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 720
     const timer = window.setTimeout(() => setIntroVisible(false), delay)
     return () => window.clearTimeout(timer)
   }, [])
@@ -35,41 +35,36 @@ export function Layout() {
     <div className="site-shell">
       {introVisible && (
         <div className="site-intro" aria-hidden="true">
-          <div className="site-intro__mark"><i /><i /><i /></div>
-          <span>CORE REACH MEDIA</span>
-          <div className="site-intro__line" />
+          <span className="site-intro__eyebrow">GLOBAL MEDIA / LOCAL EXECUTION</span>
+          <strong>CORE REACH MEDIA</strong>
+          <div className="site-intro__line"><i /></div>
         </div>
       )}
 
-      <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
-        <LogoMark />
-        <nav className="desktop-nav" aria-label="主导航">
-          {nav.map(([to, label]) => (
-            <NavLink key={to} to={to} end={to === '/'}>
-              {label}
-            </NavLink>
-          ))}
-        </nav>
-        <NavLink className="header-cta" to="/contact">
-          项目咨询 <ArrowUpRight size={15} />
-        </NavLink>
-        <button
-          className="mobile-menu-button"
-          type="button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-expanded={menuOpen}
-          aria-label={menuOpen ? '关闭菜单' : '打开菜单'}
-        >
-          {menuOpen ? <X /> : <Menu />}
-        </button>
+      <header className={`site-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
+        <div className="site-header__inner">
+          <LogoMark inverse={!scrolled && !menuOpen} />
+          <nav className="desktop-nav" aria-label="主导航">
+            {nav.map(([to, label]) => <NavLink key={to} to={to} end={to === '/'}>{label}</NavLink>)}
+          </nav>
+          <NavLink className="header-cta" to="/contact">项目咨询 <ArrowUpRight size={15} /></NavLink>
+          <button
+            className="mobile-menu-button"
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? '关闭菜单' : '打开菜单'}
+          >
+            {menuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
         {menuOpen && (
           <nav className="mobile-nav" aria-label="移动端导航">
             {nav.map(([to, label], index) => (
-              <NavLink key={to} to={to} end={to === '/'}>
-                <span>0{index + 1}</span>{label}<ArrowUpRight size={17} />
-              </NavLink>
+              <NavLink key={to} to={to} end={to === '/'}><span>0{index + 1}</span>{label}<ArrowUpRight size={18} /></NavLink>
             ))}
-            <NavLink to="/contact"><span>05</span>项目咨询<ArrowUpRight size={17} /></NavLink>
+            <NavLink to="/contact"><span>05</span>项目咨询<ArrowUpRight size={18} /></NavLink>
+            <small>CORE REACH MEDIA / GLOBAL DELIVERY</small>
           </nav>
         )}
       </header>
@@ -79,15 +74,15 @@ export function Layout() {
       <footer className="site-footer">
         <div className="site-footer__lead">
           <div>
-            <p>CORE REACH MEDIA</p>
+            <p>CORE REACH MEDIA / CHINA</p>
             <h2>从目标市场开始，<br />把下一步说清楚。</h2>
           </div>
-          <NavLink to="/contact" aria-label="提交项目需求"><ArrowUpRight size={28} /></NavLink>
+          <NavLink to="/contact" aria-label="提交项目需求"><ArrowUpRight size={32} /></NavLink>
         </div>
         <div className="site-footer__grid">
           <div className="site-footer__brand">
             <LogoMark inverse />
-            <p>为出海企业提供市场判断、本地化内容、海外媒体投放、网站和数据优化服务。</p>
+            <p>为出海企业提供市场判断、本地化内容、海外媒体投放、网站承接和数据优化服务。</p>
           </div>
           <div>
             <span>服务</span>
@@ -108,7 +103,7 @@ export function Layout() {
           </div>
         </div>
         <div className="site-footer__wordmark">CORE REACH MEDIA</div>
-        <div className="site-footer__legal"><span>© 2026 聚核智媒</span><span>ASIA BASED · GLOBAL DELIVERY</span></div>
+        <div className="site-footer__legal"><span>© 2026 聚核智媒</span><span>ASIA BASED / GLOBAL DELIVERY</span></div>
       </footer>
     </div>
   )

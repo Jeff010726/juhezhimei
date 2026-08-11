@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [redesign/core-reach-3]
+    branches: [redesign/core-reach-4-commercial]
   workflow_dispatch:
 
 permissions:
