@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="420" viewBox="0 0 1600 420" role="img" aria-labelledby="title desc">
   <title id="title">聚核智媒 Core Reach Media</title>
   <desc id="desc">White and green transparent logo for Core Reach Media</desc>
-  <g transform="skewY(-10 210 200)">
+  <g transform="translate(0 37.02) skewY(-10)">
     <rect x="60" y="180" width="86" height="170" fill="#fff"/>
     <rect x="148" y="70" width="86" height="280" fill="#fff"/>
     <rect x="236" y="130" width="86" height="220" fill="#cfff00"/>
