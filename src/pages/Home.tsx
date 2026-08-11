@@ -17,10 +17,11 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { A11y } from 'swiper/modules'
+import { A11y, Autoplay, EffectCoverflow } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
+import 'swiper/css/effect-coverflow'
 import { images } from '../assets/site-images'
 import { FictionalBrandLogo } from '../components/FictionalBrandLogo'
 import { PlatformLogo } from '../components/PlatformLogo'
@@ -59,41 +60,46 @@ const platforms = [
   },
 ]
 
-const operatingSteps = [
+const clientReviews = [
   {
-    number: '01',
-    en: 'MARKET SIGNAL',
-    title: '市场判断',
-    copy: '比较需求、竞争、渠道成本和现有资源，确认优先市场与试点范围。',
-    detail: '市场优先级 / 用户需求 / 竞争投放',
+    name: '林岚',
+    role: '海外增长负责人',
+    company: 'VELA HOME',
+    initials: 'LL',
+    market: '消费品牌 / 东南亚',
+    quote: '我们之前分别看 Meta 和 TikTok 的数据，素材结论经常对不上。项目组统一命名、周报和素材复盘后，团队可以直接判断哪条内容继续投，预算调整也快了很多。',
   },
   {
-    number: '02',
-    en: 'MEDIA ACCESS',
-    title: '账户与媒体',
-    copy: '准备账户、像素、预算结构和投放规则，让执行从一开始就有清楚的边界。',
-    detail: '账户开通 / 预算结构 / 风险检查',
+    name: '周启',
+    role: '国际业务总监',
+    company: 'NORTHLINE',
+    initials: 'ZQ',
+    market: 'B2B 制造 / 欧美',
+    quote: 'Google Ads 一直有询盘，但销售反馈质量不稳定。团队把搜索词、落地页和 CRM 反馈放到同一份周报里，低意向流量从哪里来、页面要改什么，都能在会上直接定下来。',
   },
   {
-    number: '03',
-    en: 'LOCAL CREATIVE',
-    title: '本地化创意',
-    copy: '根据当地语言、场景和购买顾虑生产素材，每轮测试保留明确变量。',
-    detail: '创意策略 / 素材变体 / 落地页表达',
+    name: '陈澄',
+    role: '品牌市场负责人',
+    company: 'NORI SKIN',
+    initials: 'CC',
+    market: '美妆个护 / 东南亚',
+    quote: '进入新市场时，我们手上只有中文卖点。项目团队重新整理当地用户会问的问题，再按使用场景安排脚本。第一轮测试结束后，后续素材该保留什么、改什么已经很清楚。',
   },
   {
-    number: '04',
-    en: 'PERFORMANCE',
-    title: '投放与优化',
-    copy: '按日处理账户异常，按周复盘受众、素材和成本，逐步集中有效预算。',
-    detail: '日常管理 / 出价测试 / 扩量路径',
+    name: '宋言',
+    role: '用户增长经理',
+    company: 'KITEPAY',
+    initials: 'SY',
+    market: '金融科技 / 拉丁美洲',
+    quote: '过去的日报只有消耗和转化数字，账户出问题后还要来回追问。现在日报会标出异常、原因和处理动作，周会只讨论需要决策的部分，内部少了很多重复确认。',
   },
   {
-    number: '05',
-    en: 'MEASUREMENT',
-    title: '数据与复盘',
-    copy: '把曝光、点击、询盘和成交放在同一条路径里，说明结果，也说明下一步。',
-    detail: '归因检查 / 周报月报 / 增长建议',
+    name: '陆川',
+    role: '全球电商运营负责人',
+    company: 'MORROW',
+    initials: 'LC',
+    market: '跨境电商 / 多市场',
+    quote: '不同国家由不同同事负责，账户结构和复盘方法很容易各做一套。合作后，各市场仍然保留本地内容差异，总部则可以用同一种口径查看预算、素材和转化结果。',
   },
 ]
 
@@ -124,7 +130,10 @@ const advantages = [
   },
 ]
 
-const clientBrands = ['NORTHLINE', 'VELA HOME', 'MORROW', 'KITEPAY', 'ASTER LABS', 'NORI SKIN', 'ORBITRA', 'FINORA']
+const clientBrandRows = [
+  ['NORTHLINE', 'VELA HOME', 'MORROW', 'KITEPAY', 'ASTER LABS', 'NORI SKIN', 'ORBITRA', 'FINORA', 'LUMENWORKS', 'PICO MOBILE', 'HARBOUR CO.', 'NOVA PLAY'],
+  ['SORA LIVING', 'ECHO COMMERCE', 'BRIGHTLANE', 'AURORA PAY', 'KINDALE', 'MONO STUDIO', 'CLEARPATH', 'OAKLINE', 'MINTDROP', 'ALTURA', 'FIELDO', 'VERDANT'],
+]
 
 const projects = [
   {
@@ -169,6 +178,8 @@ const markets = [
 
 export function Home() {
   const rootRef = useRef<HTMLDivElement>(null)
+  const [reviewSwiper, setReviewSwiper] = useState<SwiperType | null>(null)
+  const [reviewIndex, setReviewIndex] = useState(0)
   const [caseSwiper, setCaseSwiper] = useState<SwiperType | null>(null)
   const [caseIndex, setCaseIndex] = useState(0)
 
@@ -194,26 +205,6 @@ export function Home() {
         })
       })
 
-      const media = gsap.matchMedia()
-      media.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
-        const rail = document.querySelector<HTMLElement>('.operating-system__rail')
-        const stage = document.querySelector<HTMLElement>('.operating-system__stage')
-        if (!rail || !stage) return
-        const distance = () => Math.max(rail.scrollWidth - window.innerWidth, 0)
-        gsap.to(rail, {
-          x: () => -distance(),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.operating-system',
-            start: 'top top',
-            end: () => `+=${distance() + window.innerHeight * 0.8}`,
-            scrub: 0.7,
-            pin: stage,
-            invalidateOnRefresh: true,
-          },
-        })
-      })
-
       gsap.to('.brand-universe__track--one', {
         xPercent: -22,
         ease: 'none',
@@ -225,7 +216,6 @@ export function Home() {
         scrollTrigger: { trigger: '.brand-universe', start: 'top bottom', end: 'bottom top', scrub: 1 },
       })
 
-      return () => media.revert()
     }, rootRef)
 
     return () => context.revert()
@@ -268,11 +258,6 @@ export function Home() {
             </div>
           </div>
 
-          <div className="commercial-hero__trust">
-            <span>AUTHORIZED MEDIA ACCESS</span>
-            {platforms.map((platform) => <PlatformLogo key={platform.name} name={platform.name} compact />)}
-            <small>代理资质可提供核验</small>
-          </div>
         </div>
       </section>
 
@@ -308,25 +293,44 @@ export function Home() {
         </div>
       </section>
 
-      <section className="operating-system" id="growth-system">
-        <div className="operating-system__stage">
-          <div className="operating-system__intro">
-            <p className="v4-overline">02 / GROWTH OPERATING SYSTEM</p>
-            <h2>从市场判断，到可持续执行。</h2>
-            <p>每一步都要留下下一步能继续使用的信息、素材和数据。</p>
-          </div>
-          <div className="operating-system__rail">
-            {operatingSteps.map((step) => (
-              <article key={step.number}>
-                <span>{step.number}</span>
-                <small>{step.en}</small>
-                <h3>{step.title}</h3>
-                <p>{step.copy}</p>
-                <strong>{step.detail}</strong>
+      <section className="client-voices" id="client-reviews">
+        <div className="client-voices__header v4-reveal">
+          <p className="v4-overline">02 / CLIENT REVIEWS</p>
+          <h2>合作中，客户最在意哪些细节。</h2>
+          <div><span>示例评价</span><small>正式发布前替换为已获授权的客户内容</small></div>
+        </div>
+        <Swiper
+          className="client-voices__swiper"
+          modules={[A11y, Autoplay, EffectCoverflow]}
+          effect="coverflow"
+          coverflowEffect={{ rotate: 0, stretch: -24, depth: 130, modifier: 1, slideShadows: false }}
+          slidesPerView="auto"
+          centeredSlides
+          loop
+          grabCursor
+          autoplay={{ delay: 5200, disableOnInteraction: false, pauseOnMouseEnter: true }}
+          onSwiper={setReviewSwiper}
+          onSlideChange={(swiper) => setReviewIndex(swiper.realIndex)}
+        >
+          {clientReviews.map((review, index) => (
+            <SwiperSlide className="client-review" key={review.company}>
+              <span className={`client-review__avatar client-review__avatar--${index + 1}`}>{review.initials}</span>
+              <article>
+                <div className="client-review__identity">
+                  <strong>{review.name}</strong>
+                  <span>{review.role}</span>
+                  <small>{review.company} / {review.market}</small>
+                </div>
+                <p>{review.quote}</p>
+                <span className="client-review__watermark" aria-hidden="true">{review.company}</span>
               </article>
-            ))}
-          </div>
-          <div className="operating-system__progress" aria-hidden="true"><i /></div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="client-voices__controls">
+          <span>{String(reviewIndex + 1).padStart(2, '0')} / {String(clientReviews.length).padStart(2, '0')}</span>
+          <button type="button" onClick={() => reviewSwiper?.slidePrev()} aria-label="上一条评价"><ArrowLeft /></button>
+          <button type="button" onClick={() => reviewSwiper?.slideNext()} aria-label="下一条评价"><ArrowRight /></button>
         </div>
       </section>
 
@@ -379,10 +383,10 @@ export function Home() {
         </div>
         <div className="brand-universe__tracks">
           <div className="brand-universe__track brand-universe__track--one">
-            {[...clientBrands, ...clientBrands].map((brand, index) => <FictionalBrandLogo name={brand} key={`${brand}-${index}`} />)}
+            {[...clientBrandRows[0], ...clientBrandRows[0]].map((brand, index) => <FictionalBrandLogo name={brand} key={`${brand}-${index}`} />)}
           </div>
           <div className="brand-universe__track brand-universe__track--two">
-            {[...clientBrands].reverse().concat(clientBrands).map((brand, index) => <FictionalBrandLogo name={brand} key={`${brand}-reverse-${index}`} />)}
+            {[...clientBrandRows[1], ...clientBrandRows[1]].map((brand, index) => <FictionalBrandLogo name={brand} key={`${brand}-row-two-${index}`} />)}
           </div>
         </div>
       </section>
