@@ -8,7 +8,7 @@ export function Cases() {
   return (
     <>
       <Seo title="项目案例｜聚核智媒" description="查看聚核智媒在海外广告投放、创意测试和规模增长方面的项目方法与脱敏数据。" />
-      <PageHero eyebrow="SELECTED WORK" index="02" title="用真实结果，验证每一个增长判断。" intro="我们关注的不是短期曝光，而是从测试、学习到规模化的完整过程。" image="/images/global-city.jpg" />
+      <PageHero eyebrow="SELECTED WORK" index="02" title="用真实结果，验证每一个增长判断。" intro="我们关注的不是短期曝光，而是从测试、学习到规模化的完整过程。" image="/images/global-city.webp" />
 
       <section className="case-study">
         <div className="case-study__header">
@@ -22,7 +22,7 @@ export function Cases() {
           <div><strong>$0.72起</strong><span>单次链接点击费用</span></div>
         </div>
         <div className="case-study__evidence">
-          <div className="case-study__image"><img src="/images/case-dashboard.png" alt="脱敏后的 Meta 广告数据后台" /><span>账户及客户名称已脱敏</span></div>
+          <div className="case-study__image"><img src="/images/case-dashboard.webp" alt="脱敏后的 Meta 广告数据后台" /><span>账户及客户名称已脱敏</span></div>
           <div className="case-study__actions">
             <p className="eyebrow">EXECUTION FOCUS</p>
             {[

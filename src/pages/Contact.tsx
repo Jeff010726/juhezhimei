@@ -31,7 +31,7 @@ export function Contact() {
   return (
     <>
       <Seo title="联系我们｜聚核智媒" description="联系聚核智媒，讨论海外广告投放、网站建设、SEO、本地化创意和全球增长需求。" />
-      <PageHero eyebrow="LET'S TALK" index="04" title="从一次增长诊断开始。" intro="告诉我们你的业务目标、目标市场和当前挑战，我们会据此梳理最值得优先验证的增长路径。" image="/images/hero-earth.jpg" />
+      <PageHero eyebrow="LET'S TALK" index="04" title="从一次增长诊断开始。" intro="告诉我们你的业务目标、目标市场和当前挑战，我们会据此梳理最值得优先验证的增长路径。" image="/images/hero-earth.webp" />
 
       <section className="contact-section">
         <div className="contact-section__intro">

@@ -9,7 +9,7 @@ export function Services() {
   return (
     <>
       <Seo title="服务能力｜聚核智媒" description="聚核智媒提供海外广告投放、网站与独立站、SEO、创意本地化和数据增长策略。" />
-      <PageHero eyebrow="SERVICES" index="01" title="为增长配置能力，而不是堆叠服务。" intro="每个项目从真实商业目标出发，选择最能缩短验证路径、提高转化效率的执行组合。" image="/images/global-logistics.jpg" />
+      <PageHero eyebrow="SERVICES" index="01" title="为增长配置能力，而不是堆叠服务。" intro="每个项目从真实商业目标出发，选择最能缩短验证路径、提高转化效率的执行组合。" image="/images/global-logistics.webp" />
 
       <section className="services-overview">
         <SectionIntro eyebrow="FULL-FUNNEL SUPPORT" title="从市场进入到规模增长，提供全链路支持。" />
@@ -29,7 +29,7 @@ export function Services() {
       </section>
 
       <section className="services-visual-band">
-        <img src="/images/strategy-table.jpg" alt="出海增长策略讨论" />
+        <img src="/images/strategy-table.webp" alt="出海增长策略讨论" />
         <div>
           <p className="eyebrow eyebrow--light">ONE TEAM, ONE GOAL</p>
           <h2>不是多个供应商的拼接，<br />而是一支团队共同经营增长。</h2>

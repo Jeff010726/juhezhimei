@@ -44,7 +44,7 @@ export function Home() {
 
       <section className="thesis-band" id="growth">
         <motion.div className="thesis-band__visual" {...reveal}>
-          <img src="/images/global-team.jpg" alt="跨市场团队协作" />
+          <img src="/images/global-team.webp" alt="跨市场团队协作" />
           <div className="visual-stamp"><span>ONE</span><strong>GROWTH<br />SYSTEM</strong></div>
           <div className="visual-tag visual-tag--one">MARKET</div>
           <div className="visual-tag visual-tag--two">CREATIVE</div>
@@ -79,9 +79,9 @@ export function Home() {
         </div>
         <div className="capability-showcase__cards">
           {[
-            ['广告增长', '在正确市场找到高价值用户', '/images/data-dashboard.jpg', 'META · GOOGLE · TIKTOK'],
-            ['网站转化', '把访问转化成可追踪的询盘', '/images/website-analytics.jpg', 'STRATEGY · UX · ANALYTICS'],
-            ['本地化创意', '让内容进入当地用户的语境', '/images/creative-workshop.jpg', 'DESIGN · VIDEO · TESTING'],
+            ['广告增长', '在正确市场找到高价值用户', '/images/data-dashboard.webp', 'META · GOOGLE · TIKTOK'],
+            ['网站转化', '把访问转化成可追踪的询盘', '/images/website-analytics.webp', 'STRATEGY · UX · ANALYTICS'],
+            ['本地化创意', '让内容进入当地用户的语境', '/images/creative-workshop.webp', 'DESIGN · VIDEO · TESTING'],
           ].map(([title, copy, image, meta], index) => (
             <motion.article className={`capability-card capability-card--${index + 1}`} key={title} {...reveal}>
               <img src={image} alt={title} />
@@ -126,7 +126,7 @@ export function Home() {
             <Link to="/cases">查看项目方法 <MoveRight /></Link>
           </motion.div>
           <motion.div className="case-feature__evidence" {...reveal}>
-            <img src="/images/case-dashboard.png" alt="脱敏后的广告投放数据后台" />
+            <img src="/images/case-dashboard.webp" alt="脱敏后的广告投放数据后台" />
             <div className="case-feature__note"><CircleCheck size={18} /> 2025 投放后台数据，账户及客户名称已脱敏</div>
           </motion.div>
         </div>
